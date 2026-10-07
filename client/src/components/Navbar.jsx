@@ -4,7 +4,7 @@ import {
   User,
   Code,
   Briefcase,
-  MessageSquare,
+  GraduationCap,
   Mail,
   Award,
   Sun,
@@ -25,7 +25,7 @@ const navItems = [
   { name: "Compétences", href: "#skills", icon: Code },
   { name: "Projets", href: "#projects", icon: Briefcase },
   { name: "Certifications", href: "#certifications", icon: Award },
-  { name: "Témoignages", href: "#testimonials", icon: MessageSquare },
+  { name: "Mon parcours", href: "#parcours", icon: GraduationCap },
   { name: "Contact", href: "#contact", icon: Mail },
 ];
 
