@@ -1,6 +1,7 @@
-import React, { useState, useEffect } from 'react';
-import { Briefcase, Code, User, Download, Calendar, Sparkles, Target, Github, Linkedin, Twitter, Mail, Star } from 'lucide-react';
+import { useState, useEffect } from 'react';
+import { Briefcase, Code, User, Download, Calendar, Sparkles, Target, Github, Linkedin, Mail, Star } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
+import { FaWhatsapp } from 'react-icons/fa';
 
 export const AboutSection = () => {
   const [activeTab, setActiveTab] = useState('personal');
@@ -9,9 +10,9 @@ export const AboutSection = () => {
 
   const achievements = [
     { number: "15+", label: "Projets", icon: <Briefcase className="h-5 w-5" />, suffix: "" },
-    { number: "1", label: "An Exp", icon: <Calendar className="h-5 w-5" />, suffix: "+" },
+    { number: "+3", label: "années d’expérience", icon: <Calendar className="h-5 w-5" />, suffix: "" },
     { number: "99", label: "Succès", icon: <Target className="h-5 w-5" />, suffix: "%" },
-    { number: "10", label: "Clients", icon: <User className="h-5 w-5" />, suffix: "+" }
+    { number: "3", label: "mois d’expérience professionnelle", icon: <Calendar className="h-5 w-5" />, suffix: "+" }
   ];
 
   const techStack = [
@@ -25,7 +26,7 @@ export const AboutSection = () => {
   const socialLinks = [
     { icon: <Github className="h-5 w-5" />, href: "https://github.com/ismael0404" },
     { icon: <Linkedin className="h-5 w-5" />, href: "https://www.linkedin.com/in/ismael-naon-7a413933b/" },
-    { icon: <Twitter className="h-5 w-5" />, href: "mailto:ismaelnaon4@gmail.com" },
+    { icon: <FaWhatsapp className="h-5 w-5" />, href: "https://wa.me/2250564920281", label: "WhatsApp", external: true },
     { icon: <Mail className="h-5 w-5" />, href: "mailto:ismaelnaon4@gmail.com" }
   ];
 
@@ -82,7 +83,7 @@ export const AboutSection = () => {
             <span className="block text-primary animate-pulse">Idées en Réalité</span>
           </h1>
           <p className="text-base sm:text-lg md:text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed">
-            Création d'expériences numériques alliant <span className="text-primary font-semibold">innovation</span>, <span className="text-primary font-semibold">performance</span>, et <span className="text-primary font-semibold">élégance</span>
+            Création d&apos;expériences numériques alliant <span className="text-primary font-semibold">innovation</span>, <span className="text-primary font-semibold">performance</span>, et <span className="text-primary font-semibold">élégance</span>
           </p>
         </div>
 
@@ -101,7 +102,7 @@ export const AboutSection = () => {
                 <div className="flex flex-col md:flex-row items-center gap-6 md:gap-8">
                   {/* Profile Image */}
                   <div className="relative flex-shrink-0">
-                    <div className="w-28 h-28 sm:w-32 sm:h-32 rounded-2xl overflow-hidden border-4 border-primary/20 shadow-2xl transition-all duration-500 group-hover:border-primary/40 group-hover:scale-105 md:group-hover:scale-110 relative">
+                    <div className="w-36 sm:w-40 md:w-44 lg:w-48 aspect-[9/16] rounded-2xl overflow-hidden border-4 border-primary/20 shadow-2xl transition-all duration-500 group-hover:border-primary/40 group-hover:scale-105 md:group-hover:scale-110 relative">
                       <img src="/profile-logo.jpeg" alt="NAON ISMAEL" className="w-full h-full object-cover" />
                       <div className="absolute -bottom-2 -right-2 w-6 h-6 sm:w-8 sm:h-8 bg-green-500 rounded-full border-4 border-background flex items-center justify-center">
                         <div className="w-2 h-2 bg-green-300 rounded-full animate-pulse" />
@@ -212,7 +213,7 @@ export const AboutSection = () => {
                 <h4 className="font-semibold mb-2 text-center text-sm sm:text-base">Connexion Rapide</h4>
                 <div className="flex flex-wrap justify-center gap-2 sm:gap-4">
                   {socialLinks.map((social, index) => (
-                    <a key={index} href={social.href} className="p-2 bg-background rounded-lg text-muted-foreground hover:text-primary hover:bg-primary/10 transition-all duration-300 hover:scale-110">{social.icon}</a>
+                    <a key={index} href={social.href} target={social.external ? "_blank" : undefined} rel={social.external ? "noopener noreferrer" : undefined} aria-label={social.label} className="p-2 bg-background rounded-lg text-muted-foreground hover:text-primary hover:bg-primary/10 transition-all duration-300 hover:scale-110">{social.icon}</a>
                   ))}
                 </div>
               </div>

@@ -1,4 +1,4 @@
-import { ArrowDown, MousePointerClick, Sparkles, Code, Palette, Rocket, Award, Download, Calendar, Shield, Zap, Users, TrendingUp, Briefcase, Mail } from "lucide-react";
+import { ArrowDown, MousePointerClick, Sparkles, Code, Palette, Rocket, Award, Download, Calendar, TrendingUp, Briefcase, Mail } from "lucide-react";
 import { motion, useInView } from "framer-motion";
 import { useRef, useState, useEffect } from "react";
 
@@ -23,13 +23,6 @@ export const HeroSection = () => {
     "",
     "developer.connect();",
     "console.log('🚀 Créons ensemble quelque chose d\\'exceptionnel !');"
-  ];
-
-  const achievements = [
-    { number: "1+", label: "Années en Production", icon: <Shield className="h-3 w-3" /> },
-    { number: "15+", label: "Projets Livrés", icon: <TrendingUp className="h-3 w-3" /> },
-    { number: "100%", label: "Satisfaction Client", icon: <Award className="h-3 w-3" /> },
-    { number: "15+", label: "Projets Terminés", icon: <Zap className="h-3 w-3" /> }
   ];
 
   useEffect(() => {
@@ -113,18 +106,6 @@ export const HeroSection = () => {
             <motion.p className="text-lg sm:text-xl text-muted-foreground mt-6 leading-relaxed max-w-2xl" variants={{ hidden: { y: 30, opacity: 0 }, visible: { y: 0, opacity: 1, transition: { duration: 0.8 } } }}>
               Je crée des <span className="text-primary font-semibold">applications web ultra-performantes</span> qui stimulent la croissance des entreprises. Spécialisé en React, Node.js et architecture évolutive pour startups et grandes entreprises.
             </motion.p>
-
-            <motion.div className="grid grid-cols-2 sm:grid-cols-4 gap-4 my-8" variants={{ hidden: { y: 30, opacity: 0 }, visible: { y: 0, opacity: 1, transition: { duration: 0.8 } } }}>
-              {achievements.map((achievement, index) => (
-                <div key={index} className="text-center p-4 rounded-xl bg-background/60 border border-border/50 backdrop-blur-sm hover:border-primary/30 transition-all duration-300">
-                  <div className="flex items-center justify-center gap-2 mb-2">
-                    {achievement.icon}
-                    <div className="text-2xl font-bold text-foreground">{achievement.number}</div>
-                  </div>
-                  <div className="text-xs text-muted-foreground">{achievement.label}</div>
-                </div>
-              ))}
-            </motion.div>
 
             <motion.div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start" variants={{ hidden: { y: 30, opacity: 0 }, visible: { y: 0, opacity: 1, transition: { duration: 0.8 } } }}>
               <motion.a href="#projects" className="group relative overflow-hidden px-8 py-4 rounded-xl font-semibold bg-gradient-to-r from-primary to-purple-600 text-primary-foreground shadow-lg hover:shadow-xl text-sm flex items-center justify-center gap-3" whileHover={{ scale: 1.05, y: -2 }} whileTap={{ scale: 0.95 }}>

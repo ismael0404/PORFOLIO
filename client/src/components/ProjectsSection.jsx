@@ -1,135 +1,41 @@
 import { ArrowRight, ExternalLink, Github, ChevronUp, Star, Code, ChevronDown, MoveRight, Filter, Sparkles, Award, Zap, Play, Eye, Calendar, Users, X } from "lucide-react";
 import { useState, useRef } from "react";
 import { motion, useScroll, useTransform, AnimatePresence } from "framer-motion";
+import koroImage from "@/assets/projet 1.png";
+import hTelImage from "@/assets/projet 2.png";
 
 const projects = [
   {
-    id: 8,
-    title: "GenAxis",
-    category: "SaaS IA",
-    description: "Application web SaaS d'IA construite avec la stack PERN et intégrée avec Gemini. OPEN SOURCE.",
-    image: "/projects/project8.png",
-    video: "/projects/videos/genaxix-demo.mp4",
-    tags: ["PERN Stack", "Clerk Auth", "Google Gemini", "Clerk Billing", "OPEN SOURCE"],
-    demoUrl: "https://genaxis.vercel.app",
-    githubUrl: "https://github.com/ismael0404",
-    featured: true,
-    accentColor: "from-emerald-500 to-teal-600",
-    status: "En ligne",
-    highlights: ["Génération d'images", "Rédaction d'articles", "Rédaction de blogs", "Revue de CV"]
-  },
-  {
-    id: 7,
-    title: "NauraCare",
-    category: "SaaS Santé",
-    description: "Plateforme de gestion hospitalière avec accès multi-rôles, suivi des patients et systèmes de facturation.",
-    image: "/projects/project7.png",
-    video: "/projects/videos/nauracare-demo.mp4",
-    tags: ["React", "Node.js", "MongoDB", "Stripe", "JWT Auth"],
-    demoUrl: "https://nauracare.vercel.app",
-    githubUrl: "https://github.com/ismael0404",
-    featured: true,
-    accentColor: "from-emerald-500 to-teal-600",
-    status: "En ligne",
-    highlights: ["Système multi-rôles", "Gestion des patients", "Intégration de paiement"]
-  },
-  {
-    id: 1,
-    title: "Vante & Co.",
-    category: "E-commerce",
-    description: "Marketplace de mode avec recommandations de produits et expérience de paiement fluide.",
-    image: "/projects/project1.png",
-    video: "/projects/videos/vante-demo.mp4",
-    tags: ["React", "Node.js", "Stripe", "Redis"],
-    demoUrl: "https://e-commerce-website-4w6a.vercel.app",
-    githubUrl: "https://github.com/ismael0404",
-    featured: true,
-    accentColor: "from-purple-500 to-indigo-600",
-    status: "En ligne",
-    highlights: ["Catalogue de produits", "Panier d'achat", "Traitement des paiements"]
-  },
-  {
-    id: 2,
-    title: "Converse Pro",
-    category: "Communication en temps réel",
-    description: "Plateforme de chat avec messagerie en temps réel, partage de médias et authentification des utilisateurs.",
-    image: "/projects/project2.png",
-    video: "/projects/videos/converse-demo.mp4",
-    tags: ["Socket.IO", "MongoDB", "React", "WebRTC"],
-    demoUrl: "https://converse-pro-frontend.vercel.app",
-    githubUrl: "https://github.com/ismael0404",
-    featured: true,
-    accentColor: "from-blue-500 to-cyan-600",
-    status: "En ligne",
-    highlights: ["Chat en temps réel", "Partage de médias", "Authentification utilisateur"]
-  },
-  {
-    id: 3,
-    title: "Blogni AI",
-    category: "Intelligence Artificielle",
-    description: "Plateforme de génération de contenu alimentée par l'IA avec support multilingue.",
-    image: "/projects/project3.png",
-    video: "/projects/videos/blogni-demo.mp4",
-    tags: ["Next.js", "Gemini AI", "Clerk Auth", "Redis"],
-    demoUrl: "https://blogni.vercel.app",
-    githubUrl: "https://github.com/ismael0404",
+    id: "koro",
+    title: "Koro",
+    category: "Restauration",
+    description: "Site vitrine d'un restaurant à Abidjan proposant une cuisine africaine authentique et contemporaine.",
+    image: koroImage,
+    tags: ["React 19", "TypeScript", "TanStack Start", "Vite 8", "Tailwind CSS 4", "Lucide React"],
+    demoUrl: "https://koro-ci-kappa.vercel.app/",
+    githubUrl: "https://github.com/ismael0404/koro",
     accentColor: "from-amber-500 to-orange-600",
     status: "En ligne",
-    highlights: ["Génération de contenu IA", "Multilingue", "Comptes utilisateurs"]
+    highlights: ["Cuisine africaine contemporaine", "Menu et galerie", "Réservation de table"]
   },
   {
-    id: 4,
-    title: "Spendlix",
-    category: "FinTech",
-    description: "Plateforme de suivi financier avec gestion des dépenses et fonctionnalités de budgétisation.",
-    image: "/projects/project4.png",
-    video: "/projects/videos/spendlix-demo.mp4",
-    tags: ["React", "Chart.js", "Node.js", "Firebase"],
-    demoUrl: "https://spendlix.vercel.app/login",
-    githubUrl: "https://github.com/ismael0404",
-    accentColor: "from-rose-500 to-pink-600",
+    id: "h-tel",
+    title: "H-TEL",
+    category: "Hôtellerie",
+    description: "Site vitrine d'un hôtel de luxe à Abidjan, entre hébergement, gastronomie et bien-être.",
+    image: hTelImage,
+    tags: ["React 19", "TypeScript", "TanStack Start", "Vite 8", "Tailwind CSS 4", "Lucide React"],
+    demoUrl: "https://h-tel-qt5h.vercel.app/",
+    githubUrl: "https://github.com/ismael0404/H-TEL-",
+    accentColor: "from-emerald-500 to-teal-600",
     status: "En ligne",
-    highlights: ["Suivi des dépenses", "Visualisation des données", "Planification budgétaire"]
-  },
-  {
-    id: 5,
-    title: "Eattoo",
-    category: "Food Tech",
-    description: "Plateforme de livraison de nourriture avec liste de restaurants et gestion des commandes.",
-    image: "/projects/project5.png",
-    video: "/projects/videos/eattoo-demo.mp4",
-    tags: ["React", "Redux", "Mapbox", "Stripe"],
-    demoUrl: "https://eattoo-food-delivery-website-frontend.onrender.com/",
-    githubUrl: "https://github.com/ismael0404",
-    accentColor: "from-violet-500 to-purple-600",
-    status: "En ligne",
-    highlights: ["Liste de restaurants", "Système de commande", "Services de localisation"]
-  },
-  {
-    id: 6,
-    title: "JobQue",
-    category: "Tech RH",
-    description: "Plateforme de mise en relation d'emplois avec suivi des candidats et gestion des candidatures.",
-    image: "/projects/project6.png",
-    video: "/projects/videos/jobque-demo.mp4",
-    tags: ["Next.js", "PostgreSQL", "Redis", "Intégration IA"],
-    demoUrl: "#",
-    githubUrl: "https://github.com/ismael0404",
-    accentColor: "from-orange-500 to-red-600",
-    status: "En développement",
-    highlights: ["Mise en relation d'emplois", "Suivi des candidats", "Système de candidature"]
+    highlights: ["Présentation des chambres", "Expériences, restaurant et spa", "Réservation de séjour"]
   }
 ];
 
 const categoryColors = {
-  "SaaS Santé": "from-emerald-500/20 to-teal-600/20 text-emerald-600 border-emerald-500/30",
-  "SaaS IA": "from-emerald-500/20 to-teal-600/20 text-emerald-600 border-emerald-500/30",
-  "E-commerce": "from-purple-500/20 to-indigo-600/20 text-purple-600 border-purple-500/30",
-  "Communication en temps réel": "from-blue-500/20 to-cyan-600/20 text-blue-600 border-blue-500/30",
-  "Intelligence Artificielle": "from-amber-500/20 to-orange-600/20 text-amber-600 border-amber-500/30",
-  "FinTech": "from-rose-500/20 to-pink-600/20 text-rose-600 border-rose-500/30",
-  "Food Tech": "from-violet-500/20 to-purple-600/20 text-violet-600 border-violet-500/30",
-  "Tech RH": "from-orange-500/20 to-red-600/20 text-orange-600 border-orange-500/30"
+  "Restauration": "from-amber-500/20 to-orange-600/20 text-amber-600 border-amber-500/30",
+  "Hôtellerie": "from-emerald-500/20 to-teal-600/20 text-emerald-600 border-emerald-500/30"
 };
 
 export const ProjectsSection = () => {
@@ -322,14 +228,28 @@ export const ProjectsSection = () => {
                       animate={{ opacity: hoveredProject === project.id ? 1 : 0 }}
                     >
                       {/* Video Play Button */}
-                      <motion.button
-                        onClick={() => handleVideoPlay(project)}
-                        whileHover={{ scale: 1.1 }}
-                        whileTap={{ scale: 0.9 }}
-                        className="p-3 rounded-full backdrop-blur-sm border bg-white/20 text-white border-white/30 hover:bg-white/30 transition-all duration-300"
-                      >
-                        <Play size={20} />
-                      </motion.button>
+                      {project.video ? (
+                        <motion.button
+                          onClick={() => handleVideoPlay(project)}
+                          whileHover={{ scale: 1.1 }}
+                          whileTap={{ scale: 0.9 }}
+                          className="p-3 rounded-full backdrop-blur-sm border bg-white/20 text-white border-white/30 hover:bg-white/30 transition-all duration-300"
+                        >
+                          <Play size={20} />
+                        </motion.button>
+                      ) : (
+                        <motion.a
+                          href={project.demoUrl}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          aria-label={`Ouvrir la démo de ${project.title}`}
+                          whileHover={{ scale: 1.1 }}
+                          whileTap={{ scale: 0.9 }}
+                          className="p-3 rounded-full backdrop-blur-sm border bg-white/20 text-white border-white/30 hover:bg-white/30 transition-all duration-300"
+                        >
+                          <Play size={20} />
+                        </motion.a>
+                      )}
                       
                       {/* Code Button */}
                       <motion.a

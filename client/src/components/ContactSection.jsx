@@ -5,10 +5,10 @@ import {
   MapPin,
   Phone,
   Send,
-  Twitter,
   Github,
   Loader2
 } from "lucide-react";
+import { FaWhatsapp } from "react-icons/fa";
 import { cn } from "@/lib/utils";
 import { useToast } from "@/hooks/use-toast";
 import { useState } from "react";
@@ -179,9 +179,9 @@ export const ContactSection = () => {
                     url: "https://www.linkedin.com/in/ismael-naon-7a413933b/",
                   },
                   {
-                    icon: Twitter,
-                    label: "Twitter",
-                    url: "mailto:ismaelnaon4@gmail.com",
+                    icon: FaWhatsapp,
+                    label: "WhatsApp",
+                    url: "https://wa.me/2250564920281",
                   },
                   {
                     icon: Github,

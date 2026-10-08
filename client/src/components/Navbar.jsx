@@ -9,9 +9,6 @@ import {
   Award,
   Sun,
   Moon,
-  Youtube,
-  Volume2,
-  VolumeX,
   Github,
   Linkedin,
   Globe,
@@ -62,45 +59,7 @@ const ThemeToggle = () => {
 export const Navbar = () => {
   const [activeSection, setActiveSection] = useState("#hero");
   const [showNavbar, setShowNavbar] = useState(true);
-  const [isMusicPlaying, setIsMusicPlaying] = useState(false);
-  const [isAudioReady, setIsAudioReady] = useState(false);
   const lastScrollYRef = useRef(0);
-  const audioRef = useRef(null);
-
-  const musicUrl = "/music.mp3";
-
-  useEffect(() => {
-    if (typeof window !== "undefined") {
-      audioRef.current = new Audio(musicUrl);
-      audioRef.current.loop = true;
-      audioRef.current.volume = 0.5;
-      audioRef.current.preload = "auto";
-
-      const handleCanPlay = () => setIsAudioReady(true);
-
-      audioRef.current.addEventListener("canplaythrough", handleCanPlay);
-
-      return () => {
-        if (audioRef.current) {
-          audioRef.current.pause();
-          audioRef.current.removeEventListener("canplaythrough", handleCanPlay);
-          audioRef.current = null;
-        }
-      };
-    }
-  }, []);
-
-  const toggleMusic = () => {
-    if (!audioRef.current || !isAudioReady) return;
-
-    if (isMusicPlaying) {
-      audioRef.current.pause();
-    } else {
-      audioRef.current.play().catch(console.error);
-    }
-
-    setIsMusicPlaying(!isMusicPlaying);
-  };
 
   useEffect(() => {
     const handleScroll = () => {
@@ -204,47 +163,6 @@ export const Navbar = () => {
           <Linkedin className="w-5 h-5" />
         </motion.a>
 
-        {/* YouTube Button */}
-        <motion.a
-          href="mailto:ismaelnaon4@gmail.com"
-          target="_blank"
-          rel="noopener noreferrer"
-          className={cn(
-            "p-2 rounded-full bg-white/80 dark:bg-black/80 backdrop-blur-md",
-            "text-red-600 hover:bg-red-100 dark:hover:bg-red-900/50",
-            "border border-gray-200 dark:border-gray-700 shadow-sm",
-            "flex items-center justify-center"
-          )}
-          whileHover={{ scale: 1.05 }}
-          whileTap={{ scale: 0.95 }}
-          title="YouTube Channel"
-          aria-label="YouTube Channel"
-        >
-          <Youtube className="w-5 h-5" />
-        </motion.a>
-
-        {/* Music Button */}
-        <motion.button
-          onClick={toggleMusic}
-          disabled={!isAudioReady}
-          className={cn(
-            "p-2 rounded-full bg-white/80 dark:bg-black/80 backdrop-blur-md",
-            "text-primary hover:bg-primary/10 dark:hover:bg-primary/20",
-            "border border-gray-200 dark:border-gray-700 shadow-sm",
-            "flex items-center justify-center",
-            !isAudioReady && "opacity-50 cursor-not-allowed"
-          )}
-          whileHover={{ scale: isAudioReady ? 1.05 : 1 }}
-          whileTap={{ scale: isAudioReady ? 0.95 : 1 }}
-          title={
-            isAudioReady ? (isMusicPlaying ? "Pause music" : "Play music") : "Loading music..."
-          }
-          aria-label={
-            isAudioReady ? (isMusicPlaying ? "Pause music" : "Play music") : "Loading music"
-          }
-        >
-          {isMusicPlaying ? <Volume2 className="w-5 h-5" /> : <VolumeX className="w-5 h-5" />}
-        </motion.button>
       </motion.div>
 
       {/* Bottom Navbar */}
