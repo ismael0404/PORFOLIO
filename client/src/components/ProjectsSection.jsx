@@ -30,12 +30,53 @@ const projects = [
     accentColor: "from-emerald-500 to-teal-600",
     status: "En ligne",
     highlights: ["Présentation des chambres", "Expériences, restaurant et spa", "Réservation de séjour"]
+  },
+  {
+    id: "gestion-vacations-iua",
+    title: "Gestion des Vacations IUA",
+    category: "Projet PHP",
+    githubUrl: "https://github.com/ismael0404/PROJET-DE-GES-VACATION-IUA",
+    accentColor: "from-blue-500 to-cyan-600",
+    githubOnly: true
+  },
+  {
+    id: "asso-manager",
+    title: "Asso Manager",
+    category: "Projet PHP",
+    githubUrl: "https://github.com/ismael0404/asso-manager",
+    accentColor: "from-emerald-500 to-teal-600",
+    githubOnly: true
+  },
+  {
+    id: "site-de-restauration",
+    title: "Site de restauration",
+    category: "Projet PHP",
+    githubUrl: "https://github.com/ismael0404/site-de-restauration",
+    accentColor: "from-amber-500 to-orange-600",
+    githubOnly: true
+  },
+  {
+    id: "projet-salon-de-coiffure",
+    title: "Projet Salon de Coiffure",
+    category: "Projet PHP",
+    githubUrl: "https://github.com/ismael0404/projet-salon-de-coifure",
+    accentColor: "from-rose-500 to-pink-600",
+    githubOnly: true
+  },
+  {
+    id: "auto-partage",
+    title: "Auto Partage",
+    category: "Projet PHP",
+    githubUrl: "https://github.com/ismael0404/auto-partage",
+    accentColor: "from-violet-500 to-purple-600",
+    githubOnly: true
   }
 ];
 
 const categoryColors = {
   "Restauration": "from-amber-500/20 to-orange-600/20 text-amber-600 border-amber-500/30",
-  "Hôtellerie": "from-emerald-500/20 to-teal-600/20 text-emerald-600 border-emerald-500/30"
+  "Hôtellerie": "from-emerald-500/20 to-teal-600/20 text-emerald-600 border-emerald-500/30",
+  "Projet PHP": "from-blue-500/20 to-cyan-600/20 text-blue-600 border-blue-500/30"
 };
 
 export const ProjectsSection = () => {
@@ -59,7 +100,7 @@ export const ProjectsSection = () => {
     ? projects 
     : projects.filter(project => project.category === activeFilter);
   
-  const displayedProjects = showAll ? filteredProjects : filteredProjects.slice(0, 3);
+  const displayedProjects = showAll ? filteredProjects : filteredProjects.slice(0, 2);
 
   const categories = ["Tous", ...new Set(projects.map(project => project.category))];
 
@@ -174,7 +215,7 @@ export const ProjectsSection = () => {
 
         {/* Projects Grid */}
         <div className="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-8">
-          <AnimatePresence mode="wait">
+          <AnimatePresence mode="sync">
             {displayedProjects.map((project, index) => (
               <motion.div
                 key={project.id}
@@ -195,24 +236,32 @@ export const ProjectsSection = () => {
                 <div className="relative bg-background border border-border rounded-2xl overflow-hidden shadow-lg hover:shadow-xl transition-all duration-500 h-full flex flex-col">
                   
                   {/* Image/Video Section */}
-                  <div className="relative h-48 overflow-hidden">
-                    <motion.img
-                      src={project.image}
-                      alt={project.title}
-                      className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
-                      loading="lazy"
-                    />
+                  <div className={`relative overflow-hidden bg-muted/40 ${project.image ? "aspect-[2.08] sm:aspect-auto sm:h-48" : "h-48"}`}>
+                    {project.image ? (
+                      <motion.img
+                        src={project.image}
+                        alt={project.title}
+                        className="w-full h-full object-contain transition-transform duration-700 group-hover:scale-100 sm:group-hover:scale-105 sm:object-cover"
+                        loading="lazy"
+                      />
+                    ) : (
+                      <div className="flex h-full items-center justify-center bg-gradient-to-br from-primary/10 via-background to-primary/5">
+                        <Code className="h-10 w-10 text-primary/30" />
+                      </div>
+                    )}
                     
                     {/* Status Badge */}
-                    <div className="absolute top-3 right-3">
-                      <div className={`px-3 py-1 rounded-full text-xs font-medium backdrop-blur-sm ${
-                        project.status === "En ligne" 
-                          ? "bg-emerald-500/20 text-emerald-600 border border-emerald-500/30"
-                          : "bg-amber-500/20 text-amber-600 border border-amber-500/30"
-                      }`}>
-                        {project.status}
+                    {project.status && (
+                      <div className="absolute top-3 right-3">
+                        <div className={`px-3 py-1 rounded-full text-xs font-medium backdrop-blur-sm ${
+                          project.status === "En ligne"
+                            ? "bg-emerald-500/20 text-emerald-600 border border-emerald-500/30"
+                            : "bg-amber-500/20 text-amber-600 border border-amber-500/30"
+                        }`}>
+                          {project.status}
+                        </div>
                       </div>
-                    </div>
+                    )}
 
                     {/* Category Badge */}
                     <div className="absolute top-3 left-3">
@@ -237,7 +286,7 @@ export const ProjectsSection = () => {
                         >
                           <Play size={20} />
                         </motion.button>
-                      ) : (
+                      ) : project.demoUrl ? (
                         <motion.a
                           href={project.demoUrl}
                           target="_blank"
@@ -249,7 +298,7 @@ export const ProjectsSection = () => {
                         >
                           <Play size={20} />
                         </motion.a>
-                      )}
+                      ) : null}
                       
                       {/* Code Button */}
                       <motion.a
@@ -289,33 +338,40 @@ export const ProjectsSection = () => {
                       )}
                     </div>
 
-                    <p className="text-muted-foreground text-sm mb-4 leading-relaxed flex-1">
-                      {project.description}
-                    </p>
+                    {project.description && (
+                      <p className="text-muted-foreground text-sm mb-4 leading-relaxed flex-1">
+                        {project.description}
+                      </p>
+                    )}
 
                     {/* Key Features */}
-                    <div className="mb-4">
-                      <ProjectHighlights highlights={project.highlights} />
-                    </div>
+                    {project.highlights?.length > 0 && (
+                      <div className="mb-4">
+                        <ProjectHighlights highlights={project.highlights} />
+                      </div>
+                    )}
 
                     {/* Tech Stack */}
-                    <div className="flex flex-wrap gap-2 mb-4">
-                      {project.tags.map((tag, tagIndex) => (
-                        <motion.span
-                          key={tagIndex}
-                          initial={{ opacity: 0, scale: 0.8 }}
-                          animate={{ opacity: 1, scale: 1 }}
-                          transition={{ delay: index * 0.1 + tagIndex * 0.05 + 0.4 }}
-                          className="px-3 py-1 rounded-lg bg-primary/10 text-primary text-xs font-medium border border-primary/20"
-                        >
-                          {tag}
-                        </motion.span>
-                      ))}
-                    </div>
+                    {project.tags?.length > 0 && (
+                      <div className="flex flex-wrap gap-2 mb-4">
+                        {project.tags.map((tag, tagIndex) => (
+                          <motion.span
+                            key={tagIndex}
+                            initial={{ opacity: 0, scale: 0.8 }}
+                            animate={{ opacity: 1, scale: 1 }}
+                            transition={{ delay: index * 0.1 + tagIndex * 0.05 + 0.4 }}
+                            className="px-3 py-1 rounded-lg bg-primary/10 text-primary text-xs font-medium border border-primary/20"
+                          >
+                            {tag}
+                          </motion.span>
+                        ))}
+                      </div>
+                    )}
 
                     {/* Action Buttons */}
                     <div className="flex gap-3 pt-4 border-t border-border">
-                      <motion.a
+                      {project.demoUrl && (
+                        <motion.a
                         href={project.demoUrl}
                         target="_blank"
                         rel="noopener noreferrer"
@@ -330,7 +386,8 @@ export const ProjectsSection = () => {
                       >
                         <Eye size={16} />
                         {project.demoUrl === "#" ? "Bientôt disponible" : "Démo en ligne"}
-                      </motion.a>
+                        </motion.a>
+                      )}
                       
                       <motion.a
                         href={project.githubUrl}
@@ -338,7 +395,7 @@ export const ProjectsSection = () => {
                         rel="noopener noreferrer"
                         whileHover={{ scale: 1.02 }}
                         whileTap={{ scale: 0.98 }}
-                        className={`inline-flex items-center justify-center gap-2 py-2.5 px-4 rounded-lg text-sm font-medium border transition-all duration-300 ${
+                        className={`inline-flex items-center justify-center gap-2 py-2.5 rounded-lg text-sm font-medium border transition-all duration-300 ${project.githubOnly ? "flex-1" : "px-4"} ${
                           project.githubUrl === "#"
                             ? "bg-muted text-muted-foreground cursor-not-allowed border-border"
                             : "bg-background text-foreground border-border hover:border-primary hover:bg-primary/5"
@@ -346,7 +403,7 @@ export const ProjectsSection = () => {
                         onClick={(e) => project.githubUrl === "#" && e.preventDefault()}
                       >
                         <Github size={16} />
-                        Code
+                        {project.githubOnly ? "GitHub" : "Code"}
                       </motion.a>
                     </div>
                   </div>
@@ -360,7 +417,7 @@ export const ProjectsSection = () => {
         </div>
 
         {/* Load More */}
-        {filteredProjects.length > 3 && (
+        {filteredProjects.length > 2 && (
           <motion.div 
             className="text-center mt-16"
             initial={{ opacity: 0, y: 30 }}
@@ -381,11 +438,11 @@ export const ProjectsSection = () => {
               {showAll ? (
                 <>
                   <ChevronUp size={18} />
-                  Voir Moins
+                  Voir moins
                 </>
               ) : (
                 <>
-                  Voir Plus de Projets
+                  Voir plus
                   <ArrowRight size={18} />
                 </>
               )}

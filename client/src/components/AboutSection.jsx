@@ -25,8 +25,8 @@ export const AboutSection = () => {
 
   const socialLinks = [
     { icon: <Github className="h-5 w-5" />, href: "https://github.com/ismael0404" },
-    { icon: <Linkedin className="h-5 w-5" />, href: "https://www.linkedin.com/in/ismael-naon-7a413933b/" },
-    { icon: <FaWhatsapp className="h-5 w-5" />, href: "https://wa.me/2250564920281", label: "WhatsApp", external: true },
+    { icon: <Linkedin className="h-5 w-5" />, href: "https://www.linkedin.com/in/ismael-naon-21357442" },
+    { icon: <FaWhatsapp className="h-5 w-5" />, href: "https://wa.me/2250564920328", label: "WhatsApp", external: true },
     { icon: <Mail className="h-5 w-5" />, href: "mailto:ismaelnaon4@gmail.com" }
   ];
 

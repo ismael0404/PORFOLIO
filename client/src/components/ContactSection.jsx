@@ -126,41 +126,41 @@ export const ContactSection = () => {
             </h3>
 
             <div className="space-y-4 sm:space-y-6">
-              <div className="flex items-center gap-3 sm:gap-4 p-3 sm:p-4 hover:bg-accent/30 rounded-lg sm:rounded-xl transition-all duration-300">
-                <div className="p-2 sm:p-3 rounded-lg sm:rounded-xl bg-primary/10 text-primary">
+              <div className="flex items-start sm:items-center gap-3 sm:gap-4 p-3 sm:p-4 hover:bg-accent/30 rounded-lg sm:rounded-xl transition-all duration-300">
+                <div className="shrink-0 p-2 sm:p-3 rounded-lg sm:rounded-xl bg-primary/10 text-primary">
                   <Mail className="h-4 w-4 sm:h-5 sm:w-5" />
                 </div>
-                <div>
+                <div className="min-w-0 flex-1">
                   <p className="text-xs sm:text-sm text-muted-foreground">Email</p>
                   <a
                     href="mailto:ismaelnaon4@gmail.com"
-                    className="text-sm sm:text-base font-medium hover:text-primary transition-colors"
+                    className="break-all text-sm sm:text-base font-medium hover:text-primary transition-colors"
                   >
                     ismaelnaon4@gmail.com
                   </a>
                 </div>
               </div>
               
-              <div className="flex items-center gap-3 sm:gap-4 p-3 sm:p-4 hover:bg-accent/30 rounded-lg sm:rounded-xl transition-all duration-300">
-                <div className="p-2 sm:p-3 rounded-lg sm:rounded-xl bg-primary/10 text-primary">
+              <div className="flex items-start sm:items-center gap-3 sm:gap-4 p-3 sm:p-4 hover:bg-accent/30 rounded-lg sm:rounded-xl transition-all duration-300">
+                <div className="shrink-0 p-2 sm:p-3 rounded-lg sm:rounded-xl bg-primary/10 text-primary">
                   <Phone className="h-4 w-4 sm:h-5 sm:w-5" />
                 </div>
-                <div>
+                <div className="min-w-0 flex-1">
                   <p className="text-xs sm:text-sm text-muted-foreground">Téléphone</p>
                   <a
-                    href="tel:+919315145594"
+                    href="tel:+2250564920328"
                     className="text-sm sm:text-base font-medium hover:text-primary transition-colors"
                   >
-                    +91 9315145594
+                    +225 05 64 92 03 28
                   </a>
                 </div>
               </div>
               
-              <div className="flex items-center gap-3 sm:gap-4 p-3 sm:p-4 hover:bg-accent/30 rounded-lg sm:rounded-xl transition-all duration-300">
-                <div className="p-2 sm:p-3 rounded-lg sm:rounded-xl bg-primary/10 text-primary">
+              <div className="flex items-start sm:items-center gap-3 sm:gap-4 p-3 sm:p-4 hover:bg-accent/30 rounded-lg sm:rounded-xl transition-all duration-300">
+                <div className="shrink-0 p-2 sm:p-3 rounded-lg sm:rounded-xl bg-primary/10 text-primary">
                   <MapPin className="h-4 w-4 sm:h-5 sm:w-5" />
                 </div>
-                <div>
+                <div className="min-w-0 flex-1">
                   <p className="text-xs sm:text-sm text-muted-foreground">Emplacement</p>
                   <span className="text-sm sm:text-base font-medium">
                     À distance
@@ -176,12 +176,12 @@ export const ContactSection = () => {
                   {
                     icon: Linkedin,
                     label: "LinkedIn",
-                    url: "https://www.linkedin.com/in/ismael-naon-7a413933b/",
+                    url: "https://www.linkedin.com/in/ismael-naon-21357442",
                   },
                   {
                     icon: FaWhatsapp,
                     label: "WhatsApp",
-                    url: "https://wa.me/2250564920281",
+                    url: "https://wa.me/2250564920328",
                   },
                   {
                     icon: Github,
